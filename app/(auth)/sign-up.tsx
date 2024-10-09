@@ -1,8 +1,11 @@
 import { Text, ScrollView, View, Image } from "react-native";
 import { images } from "@/constants";
 import InputField from "@/components/InputField";
+import { useState } from "react";
 
 const SignUp = () => {
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
+
   return (
     <ScrollView className="flex-1 bg-white ">
       <View className="flex-1 bg-white">
@@ -13,7 +16,13 @@ const SignUp = () => {
           </Text>
         </View>
         <View>
-          <InputField />
+          <InputField
+            label="Name"
+            placeholder="Enter your name"
+            icon={icons.person}
+            value={form.name}
+            onChnageText={(value) => setFormValue({ ...form, name: value })}
+          />
         </View>
       </View>
     </ScrollView>
